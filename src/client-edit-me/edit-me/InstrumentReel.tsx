@@ -53,6 +53,16 @@ export interface InstrumentReelProps {
   instrumentSymbols: InstrumentSymbol[];
 }
 
+function getDuplicates(instruments: Instrument[]): Instrument[] {
+  if (instruments.length >= 7 || instruments.length === 0) return instruments;
+  let duplicates: Instrument[] = [ ...instruments ];
+  while (duplicates.length < 8) {
+    duplicates = duplicates.concat(instruments);
+  }
+  console.log({ duplicates })
+  return duplicates;
+}
+
 function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
   /**
    * ❌ Please do not edit this
@@ -70,10 +80,21 @@ function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
         <h1>Instrument Reel</h1>
       </div>
       <div className={'reel-wrapper'}>
-        <div className={'reels-scroller'}>
+        <div
+          style={{
+            animation: `scroll 21000ms linear infinite`
+          }}
+          className={'reels-scroller'}
+        >
           {instruments.map((instrument) => (
             <ReelItem
               key={instrument.code}
+              instrument={instrument}
+            />
+          ))}
+          {getDuplicates(instruments).map((instrument, index) => (
+            <ReelItem
+              key={index}
               instrument={instrument}
             />
           ))}
