@@ -24,7 +24,7 @@ function calculateDifference({
 }): string {
   const difference = (currentQuote / lastQuote - 1);
   if (isFinite(difference)) {
-    return `${difference > 0 ? '+' : ''}${difference.toFixed(4)}%`;
+    return `${difference > 0 ? '+' : ''}${difference.toFixed(3)}%`;
   } else {
     return '0.0000%';
   }
