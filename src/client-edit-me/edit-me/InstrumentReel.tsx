@@ -81,9 +81,6 @@ function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
       </div>
       <div className={'reel-wrapper'}>
         <div
-          style={{
-            animation: `scroll 21000ms linear infinite`
-          }}
           className={'reels-scroller'}
         >
           {instruments.map((instrument) => (

@@ -19,7 +19,7 @@
 
 .reels-scroller {
     display: flex;
-
+    animation: scroll 21000ms linear infinite;
 }
 
 .reels-scroller:hover {
