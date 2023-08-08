@@ -60,8 +60,6 @@ function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
    */
   const instruments = useInstruments(instrumentSymbols);
 
-  console.log({ instruments });
-
   /**
    * ✅ You can edit from here down in this component.
    * Please feel free to add more components to this file or other files if you want to.
@@ -73,12 +71,14 @@ function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
         <h1>Instrument Reel</h1>
       </div>
       <div className={'reel-wrapper'}>
-        {instruments.map((instrument) => (
-          <ReelItem
-            key={instrument.code}
-            instrument={instrument}
-          />
-        ))}
+        <div className={'reels-scroller'}>
+          {instruments.map((instrument) => (
+            <ReelItem
+              key={instrument.code}
+              instrument={instrument}
+            />
+          ))}
+        </div>
       </div>
       <div className='instrument-reel'>
         <p>ID: {id}</p>

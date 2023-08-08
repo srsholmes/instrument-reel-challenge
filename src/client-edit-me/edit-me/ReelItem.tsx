@@ -65,7 +65,7 @@ export const ReelItem = (props: { instrument: Instrument }) => {
         )
         }
       </div>
-      <div>
+      <div className={'reel-item-name'}>
         <span>{instrument.name}</span>
       </div>
       <div
