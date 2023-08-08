@@ -75,7 +75,7 @@ function App() {
       </form>
 
       {instrumentReels.map((instrumentReel, i) => (
-        <div key={i} className="tt-wrapper">
+        <div key={instrumentReel.id} className="tt-wrapper">
           <InstrumentReel {...instrumentReel} />
           <span
             role="button"
