@@ -92,10 +92,7 @@ export class InstrumentSocketClient {
 
   onMessage = (event: MessageEvent) => {
     const data = JSON.parse(event.data);
-    console.log(data);
-    console.log('data', data)
     if (data.type === 'update') {
-      console.log(this.reels)
       this.reels.forEach((value) => {
         const instruments = data.instruments.filter((instrument: Instrument) => {
           return value.instrumentSymbols.includes(instrument.code);

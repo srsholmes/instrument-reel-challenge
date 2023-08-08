@@ -20,8 +20,6 @@ const client = new InstrumentSocketClient();
  * ❌ Please do not edit this hook name & args
  */
 function useInstruments(instrumentSymbols: InstrumentSymbol[]) {
-  console.log('useInstruments fired', instrumentSymbols);
-
   /**
    * ✅ You can edit inside the body of this hook
    */

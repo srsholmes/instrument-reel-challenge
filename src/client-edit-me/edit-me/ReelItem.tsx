@@ -23,7 +23,11 @@ function calculateDifference({
   lastQuote: number
 }): string {
   const difference = (currentQuote / lastQuote - 1);
-  return `${difference > 0 ? '+' : ''}${difference.toFixed(4)}%`;
+  if (isFinite(difference)) {
+    return `${difference > 0 ? '+' : ''}${difference.toFixed(4)}%`;
+  } else {
+    return '0.0000%';
+  }
 }
 
 export const ReelItem = (props: { instrument: Instrument }) => {
