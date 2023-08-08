@@ -97,7 +97,10 @@ export class InstrumentSocketClient {
     if (data.type === 'update') {
       console.log(this.reels)
       this.reels.forEach((value) => {
-        value.setInstruments(data.instruments);
+        const instruments = data.instruments.filter((instrument: Instrument) => {
+          return value.instrumentSymbols.includes(instrument.code);
+        })
+        value.setInstruments(instruments);
       });
     }
   }

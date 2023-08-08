@@ -1,0 +1,33 @@
+/**
+ * ✅ You can edit this file to add your own styles.
+ */
+
+.reel-item {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: auto auto 1fr;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    max-width: 250px;
+}
+
+.reel-item:hover {
+    background: #434343;
+    cursor: pointer;
+}
+
+.reel-item-icon {
+    display: flex;
+    place-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.reel-item-quote {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+}

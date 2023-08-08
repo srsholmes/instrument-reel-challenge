@@ -6,9 +6,10 @@
  * ✅ You can add/edit these imports
  */
 import { Instrument, InstrumentSymbol } from '../../common-leave-me';
-import { InstrumentSocketClient } from "./InstrumentSocketClient";
-import "./InstrumentReel.css";
+import { InstrumentSocketClient } from './InstrumentSocketClient';
+import './InstrumentReel.css';
 import { useEffect, useId, useRef, useState } from 'react';
+import { ReelItem } from './ReelItem';
 
 /**
  * ❌ Please do not edit this
@@ -19,7 +20,7 @@ const client = new InstrumentSocketClient();
  * ❌ Please do not edit this hook name & args
  */
 function useInstruments(instrumentSymbols: InstrumentSymbol[]) {
-  console.log('useInstruments fired', instrumentSymbols)
+  console.log('useInstruments fired', instrumentSymbols);
 
   /**
    * ✅ You can edit inside the body of this hook
@@ -27,7 +28,7 @@ function useInstruments(instrumentSymbols: InstrumentSymbol[]) {
 
   const ref = useRef<string | null>(null);
   const id = useId();
-  const [instruments, setInstruments] = useState<Instrument[]>([]);
+  const [ instruments, setInstruments ] = useState<Instrument[]>([]);
 
   useEffect(() => {
     if (!ref.current) {
@@ -44,15 +45,15 @@ function useInstruments(instrumentSymbols: InstrumentSymbol[]) {
         client.removeReel({ id: ref.current });
         ref.current = null;
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return instruments;
 }
 
 export interface InstrumentReelProps {
   instrumentSymbols: InstrumentSymbol[];
-  id: string
+  id: string;
 }
 
 function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
@@ -61,7 +62,7 @@ function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
    */
   const instruments = useInstruments(instrumentSymbols);
 
-  console.log({ instruments })
+  console.log({ instruments });
 
   /**
    * ✅ You can edit from here down in this component.
@@ -69,18 +70,19 @@ function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
    */
 
   return (
-    <div>
-      <h1>Instrument Reel</h1>
-      {instruments.map((instrument) => (
-        <div key={instrument.code} className="instrument">
-          <p>Name: {instrument.name}</p>
-          <p>Code: {instrument.code}</p>
-          <p>LastQuote: {instrument.lastQuote}</p>
-          <p>Symbol: {instrument.category}</p>
-          <p>Price: {instrument.pair}</p>
-        </div>
-      ))}
-      <div className="instrument-reel">
+    <div className={'reels'}>
+      <div>
+        <h1>Instrument Reel</h1>
+      </div>
+      <div className={'reel-wrapper'}>
+        {instruments.map((instrument) => (
+          <ReelItem
+            key={instrument.code}
+            instrument={instrument}
+          />
+        ))}
+      </div>
+      <div className='instrument-reel'>
         <p>ID: {id}</p>
       </div>
     </div>

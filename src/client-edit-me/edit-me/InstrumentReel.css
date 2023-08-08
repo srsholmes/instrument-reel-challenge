@@ -1,3 +1,18 @@
 /**
  * ✅ You can edit this file to add your own styles.
  */
+
+
+.reels {
+    background: green;
+    display: grid;
+    width: 100%;
+}
+
+.reel-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    overflow: hidden;
+    background: pink;
+}
