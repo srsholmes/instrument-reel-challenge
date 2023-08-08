@@ -51,10 +51,9 @@ function useInstruments(instrumentSymbols: InstrumentSymbol[]) {
 
 export interface InstrumentReelProps {
   instrumentSymbols: InstrumentSymbol[];
-  id: string;
 }
 
-function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
+function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
   /**
    * ❌ Please do not edit this
    */
@@ -79,9 +78,6 @@ function InstrumentReel({ instrumentSymbols, id }: InstrumentReelProps) {
             />
           ))}
         </div>
-      </div>
-      <div className='instrument-reel'>
-        <p>ID: {id}</p>
       </div>
     </div>
   );
