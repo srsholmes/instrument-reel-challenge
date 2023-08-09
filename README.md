@@ -1,5 +1,6 @@
 ## Notes
  - I had an issue with the Instrument Reel when adding / removing. I managed to fix it by using the instrumentReel ID as the key for the 'tt-wrapper' div, rather than the index. I realise I was not meant to edit the App.tsx file, but I felt like this was the best solution to the problem. Hopefully this is ok. See the pitfall here https://react.dev/learn/rendering-lists#why-does-react-need-keys for explanation.
+ - I also made it so when the reel has fewer instruments than the wrapper can fit, it will not scroll. I felt like this was a better user experience than having the reel scroll when it doesn't need to.
 
 # Overview
 As a member of the Valstro UI Engineering team, you'll be building a multi-window desktop application with complex UI features. Therefore, the purpose of this assessment is to show that you have the fundamentals for building fast reactive UI applications, with modern day best practices.

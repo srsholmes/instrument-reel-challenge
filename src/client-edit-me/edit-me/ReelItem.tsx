@@ -26,7 +26,7 @@ function calculateDifference({
   if (isFinite(difference)) {
     return `${difference > 0 ? '+' : ''}${difference.toFixed(3)}%`;
   } else {
-    return '0.0000%';
+    return '0.000%';
   }
 }
 
