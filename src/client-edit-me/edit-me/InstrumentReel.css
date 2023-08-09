@@ -17,9 +17,17 @@
     border: 1px solid gray;
 }
 
-.reels-scroller {
+.reels-scroller{
     display: flex;
-    animation: scroll 21000ms linear infinite;
+}
+
+.reels-scroller.animation {
+    animation: scroll linear infinite;
+    animation-duration: var(--animation-duration);
+}
+
+.reels-scroller.no-animation {
+    animation: none;
 }
 
 .reels-scroller:hover {

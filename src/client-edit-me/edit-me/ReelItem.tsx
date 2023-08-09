@@ -30,8 +30,8 @@ function calculateDifference({
   }
 }
 
-export const ReelItem = (props: { instrument: Instrument }) => {
-  const { instrument } = props;
+export const ReelItem = (props: { instrument: Instrument, isDuplicate: boolean }) => {
+  const { instrument, isDuplicate  } = props;
   const ref = useRef<number>(0);
 
   useEffect(() => {
@@ -40,8 +40,8 @@ export const ReelItem = (props: { instrument: Instrument }) => {
 
   return (
     <div
-      key={instrument.code}
-      className='reel-item'
+      key={`${isDuplicate ? `${instrument.code}-duplicate` : `${instrument.code}-instrument`}`}
+      className={`reel-item ${isDuplicate ? 'reel-item-duplicate' : 'reel-item-instrument'}`}
     >
       <div className='reel-item-icon'>
         {instrument.code === 'EURUSD' ? (

@@ -53,16 +53,6 @@ export interface InstrumentReelProps {
   instrumentSymbols: InstrumentSymbol[];
 }
 
-function getDuplicates(instruments: Instrument[]): Instrument[] {
-  if (instruments.length >= 7 || instruments.length === 0) return instruments;
-  let duplicates: Instrument[] = [ ...instruments ];
-  while (duplicates.length < 8) {
-    duplicates = duplicates.concat(instruments);
-  }
-  console.log({ duplicates })
-  return duplicates;
-}
-
 function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
   /**
    * ❌ Please do not edit this
@@ -74,27 +64,59 @@ function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
    * Please feel free to add more components to this file or other files if you want to.
    */
 
+  const wrapper = useRef<HTMLDivElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
+  const [ animate, setAnimate ] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!scroller.current || !wrapper.current) return;
+    const wrapperWidth = wrapper.current.getBoundingClientRect().width;
+    const items = wrapper.current.querySelectorAll('.reel-item-instrument');
+    let itemsWidth = 0;
+    items.forEach((item) => {
+      itemsWidth += item.getBoundingClientRect().width;
+    });
+    if (itemsWidth > wrapperWidth) {
+      const totalWidth = itemsWidth * 2;
+      const difference = totalWidth - wrapperWidth;
+      const speed = difference / 50;
+      scroller.current.style.setProperty('--animation-duration', `${speed}s`);
+      setAnimate(true);
+
+    } else {
+      setAnimate(false);
+    }
+  }, [ instruments ]);
+
   return (
     <div className={'reels'}>
-      <div>
-        <h1>Instrument Reel</h1>
-      </div>
-      <div className={'reel-wrapper'}>
+      <div
+        ref={wrapper}
+        className={'reel-wrapper'}
+      >
         <div
-          className={'reels-scroller'}
+          ref={scroller}
+          className={`reels-scroller ${animate ? 'animation' : 'no-animation'}`}
         >
           {instruments.map((instrument) => (
             <ReelItem
-              key={instrument.code}
+              isDuplicate={false}
               instrument={instrument}
             />
           ))}
-          {getDuplicates(instruments).map((instrument, index) => (
-            <ReelItem
-              key={index}
-              instrument={instrument}
-            />
-          ))}
+          {
+            animate ? (
+              instruments.map((instrument, index) => (
+                <>
+                  <ReelItem
+                    isDuplicate={true}
+                    instrument={instrument}
+                  />
+                </>
+              ))
+            ) : null
+          }
+
         </div>
       </div>
     </div>
