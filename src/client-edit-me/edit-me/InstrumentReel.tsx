@@ -100,19 +100,19 @@ function InstrumentReel({ instrumentSymbols }: InstrumentReelProps) {
         >
           {instruments.map((instrument) => (
             <ReelItem
+              key={`${instrument.code}-instrument`}
               isDuplicate={false}
               instrument={instrument}
             />
           ))}
           {
             animate ? (
-              instruments.map((instrument, index) => (
-                <>
-                  <ReelItem
-                    isDuplicate={true}
-                    instrument={instrument}
-                  />
-                </>
+              instruments.map((instrument) => (
+                <ReelItem
+                  key={`${instrument.code}-duplicate`}
+                  isDuplicate={true}
+                  instrument={instrument}
+                />
               ))
             ) : null
           }

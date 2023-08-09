@@ -40,7 +40,6 @@ export const ReelItem = (props: { instrument: Instrument, isDuplicate: boolean }
 
   return (
     <div
-      key={`${isDuplicate ? `${instrument.code}-duplicate` : `${instrument.code}-instrument`}`}
       className={`reel-item ${isDuplicate ? 'reel-item-duplicate' : 'reel-item-instrument'}`}
     >
       <div className='reel-item-icon'>
